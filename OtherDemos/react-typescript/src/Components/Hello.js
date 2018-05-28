@@ -9,14 +9,20 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __importStar(require("react"));
 class Hello extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: ''
+        };
+    }
+    ;
     render() {
-        const { id, name, roleid = 0 } = this.props;
-        if (roleid < 0) {
+        if (this.props.roleid == 0) {
             throw new Error('临时工');
         }
         return (React.createElement("div", { className: "class" },
             "Hello ",
-            id + name + roleid));
+            this.props.id + this.props.name + this.props.roleid));
     }
 }
 exports.default = Hello;

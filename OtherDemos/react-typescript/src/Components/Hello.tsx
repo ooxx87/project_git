@@ -1,22 +1,32 @@
-import * as React  from 'react'
+import * as React from 'react'
 
-export interface Props{
+export interface helloProps{
     id: string;
     name: string;
     roleid?: number
 }
+export interface helloState{
+    title: string
+}
 
-class Hello extends React.Component<Props, object>{
+class Hello extends React.Component<helloProps, helloState>{
+    public state: helloState;
+    constructor(props: helloProps){
+        super(props);
+        this.state = {
+            title: ''
+        }
+
+    };
     render() {
-        const { id, name, roleid = 0 } = this.props;
 
-        if(roleid < 0){
+        if(this.props.roleid == 0){
             throw new Error('临时工');
         }
 
         return (
             <div className="class">
-                Hello {id + name + roleid}
+                Hello {this.props.id + this.props.name + this.props.roleid}
             </div>
         );
     }
